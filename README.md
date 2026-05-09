@@ -24,9 +24,10 @@ node profileBuilder.js
 
 ### Screenshots
 
-![Output 1](./assets/outputone.png)
-![Output 2](./assets/outputtwo.png)
-![Output 3](./assets/outputthree.png)
-![Output 4](./assets/outputfour.png)
-![Output 5](./assets/outputfive.png)
-![Output 6](./assets/outputsix.png)
+![Output 1](../assets/outputone.png)
+![Output 2](../assets/outputtwo.png)
+![Output 3](../assets/outputthree.png)
+![Output 4](../assets/outputfour.png)
+![Output 5](../assets/outputfive.png)
+![Output 6](../assets/outputsix.png)
+
