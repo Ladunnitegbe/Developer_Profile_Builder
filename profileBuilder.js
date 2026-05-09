@@ -155,9 +155,9 @@ const newDeveloper = {
    mentor: null
 };
 
-const updatedDevelopers = addDeveloper(developers, newDeveloper);
+const addedDevelopers = addDeveloper(developers, newDeveloper);
 
-console.log(updatedDevelopers);
+console.log(addedDevelopers);
 
 
 // Step 5: Update a Developer
@@ -196,14 +196,50 @@ console.log(updatedDevelopers);
 
 console.log("\nUpdated Emeka:");
 console.log(updatedEmeka)
+
+
 // Step 6: Mentor Workload
 // Calculate how many developers each mentor has. Handle the `null` mentor case.
-//  Requirements:
-// Use `.reduce()` to build an object: `{ "Sarah Chen": 2, "James Udo": 1, ... }`
-// Use optional chaining for `mentor?.name`
-// Use nullish coalescing to handle null mentors (count them under `"Unassigned"`) 
+ 
+ 
+const mentorStats = developers.reduce((accumulator, dev) => {
+    const mentorName = dev.mentor?.name ?? "Unassigned";
+    accumulator[mentorName] = (accumulator[mentorName] || 0) + 1;
+
+    return accumulator;
+}, {});
+
+console.log(mentorStats);
+
 // // Step 7: Experience Ranking
 // // Rank developers by total projects (completed + ongoing), highest first.
 
+const developersNew = [...developers];
 
+developersNew.sort(({ projects: a }, { projects: b }) => {
+  const totalA = a.completed + a.ongoing;
+  const totalB = b.completed + b.ongoing;
+
+  return totalB - totalA;
+});
+
+const ranked = developersNew.map((dev, index) => {
+  const total =
+    dev.projects.completed + dev.projects.ongoing;
+
+  const medal =
+    index === 0
+      ? "🥇"
+      : index === 1
+      ? "🥈"
+      : index === 2
+      ? "🥉"
+      : "";
+
+  return `
+${index + 1}. ${medal} ${dev.name} - ${total} projects
+`;
+});
+
+console.log(ranked.join("\n"));
 
